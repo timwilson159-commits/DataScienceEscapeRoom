@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Storm Station: Data Science Escape Room</title>
+<meta name="description" content="A Year 8 escape room about data, scientific models, simulations and making predictions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lilita+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/extra.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌀</text></svg>">
+</head>
+<body>
+<div id="bubbles" aria-hidden="true"></div>
+
+<header id="topbar">
+  <div class="brand"><span class="brand-icon">🌀</span><div><h1>Storm Station</h1><p>Data Science Escape Room</p></div></div>
+  <div class="hud">
+    <div class="hud-pill" title="Codes found"><span>🔠</span> <b id="hud-codes">0 / 9</b></div>
+    <div class="hud-pill" id="hud-timer" title="Escape time (a hint adds 3 minutes, revealed answers add 10)"><span>⏱️</span> <b id="hud-time">00:00</b></div>
+    <button class="icon-btn" id="btn-handbook" title="Model handbook" aria-label="Model handbook">📖</button>
+    <button class="icon-btn" id="btn-science" title="Science or not?" aria-label="Science or not">🔬</button>
+    <button class="icon-btn" id="btn-sound" title="Sound on/off" aria-label="Sound on or off">🔊</button>
+    <button class="icon-btn" id="btn-help" title="How to play" aria-label="How to play">❓</button>
+  </div>
+</header>
+
+<main id="app">
+  <section id="room-view">
+    <div class="room-wrap">
+      <canvas id="room" width="960" height="672" aria-label="Top-down view of the research station. Move with arrow keys or WASD, or click where you want to walk."></canvas>
+      <div id="prompt" class="prompt" hidden></div>
+    </div>
+    <p class="controls-tip">Move: <kbd>WASD</kbd>/<kbd>Arrows</kbd> or click the floor &nbsp;·&nbsp; Open a station: <kbd>E</kbd> / <kbd>Space</kbd> or click it</p>
+  </section>
+
+  <aside id="notes">
+    <div class="notes-head">
+      <h2>🔠 Code Log</h2>
+      <p>Each station gives one coded letter. They are logged here automatically.</p>
+    </div>
+    <ol id="notes-list"></ol>
+    <div class="notes-foot">
+      <p>🚪 The shelter hatch needs <b>all 9 codes</b>, and you must show you can talk like a data scientist:</p>
+      <div class="keyword">DATA · MODEL · PREDICTION</div>
+    </div>
+  </aside>
+
+  <section id="puzzle-view" hidden></section>
+</main>
+
+<div id="modal-root"></div>
+
+<script src="js/core.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/extras.js"></script>
+<script src="js/tools.js"></script>
+<script src="js/models.js"></script>
+<script src="js/reference.js"></script>
+<script src="js/puzzles/footprint.js"></script>
+<script src="js/puzzles/hare.js"></script>
+<script src="js/puzzles/outbreak.js"></script>
+<script src="js/puzzles/bunny.js"></script>
+<script src="js/puzzles/popn.js"></script>
+<script src="js/puzzles/forecast.js"></script>
+<script src="js/puzzles/garden.js"></script>
+<script src="js/puzzles/market.js"></script>
+<script src="js/puzzles/museum.js"></script>
+<script src="js/door.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

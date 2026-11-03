@@ -1,0 +1,113 @@
+/* ============ Storm Station additions ============ */
+
+/* falling rain instead of rising bubbles */
+#bubbles span {
+  top: -30px; bottom: auto; border-radius: 2px; box-shadow: none;
+  background: linear-gradient(to bottom, rgba(180, 220, 255, 0), rgba(180, 220, 255, 0.85));
+  animation: rainfall linear infinite;
+}
+@keyframes rainfall { to { transform: translateY(110vh); } }
+
+/* reference popups */
+.term-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin: 10px 0; }
+.term-card { display: flex; gap: 12px; background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 12px 14px; }
+.term-icon { font-size: 2rem; line-height: 1; }
+.term-card h4 { margin: 0 0 2px; color: var(--aqua-dark); }
+.term-card p { margin: 0 0 4px; font-size: 0.95rem; }
+.term-eg { color: var(--muted); font-size: 0.88rem !important; }
+.ref-sub { margin: 14px 0 6px; }
+.vs-grid.four { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.sir-s { color: #15803d; } .sir-i { color: #dc2626; } .sir-r { color: #2563eb; }
+
+/* stages, badges, mission lists */
+.stage-title { font-family: var(--display); font-size: 1.15rem; color: var(--ocean); margin: 18px 0 8px; }
+.badge { display: inline-block; padding: 1px 10px; border-radius: 999px; background: #eef2f8; color: var(--muted); font-weight: 600; font-size: 0.88rem; border: 2px solid #c9d6ea; }
+.badge.ok { background: #dcfce7; color: var(--kelp-dark); border-color: var(--kelp); }
+.mission-list { margin: 8px 0 4px; padding-left: 20px; }
+.mission-list li { margin-bottom: 6px; }
+
+/* simulation controls */
+.sim-card { display: block; }
+.controls-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px 18px; margin-bottom: 4px; }
+.slider-row { display: grid; grid-template-columns: 1fr; gap: 4px; font-weight: 600; }
+.slider-row input[type=range] { width: 100%; accent-color: var(--aqua-dark); height: 28px; }
+.slider-val { color: var(--aqua-dark); font-family: var(--display); font-weight: 400; font-size: 1.15rem; }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg-btn { font-family: var(--font); font-weight: 600; font-size: 0.95rem; padding: 7px 12px; border-radius: 12px; border: 3px solid #b8c7de; background: #fff; color: var(--ink); cursor: pointer; }
+.seg-btn.on { background: var(--sun); border-color: var(--sun-dark); }
+.live-line { margin: 10px 0; padding: 8px 12px; background: #0d2242; color: #e8f6ff; border-radius: 12px; font-weight: 600; font-size: 0.95rem; min-height: 2.4em; }
+
+/* charts */
+.chart-box { width: 100%; }
+.live-chart svg { width: 100%; height: auto; display: block; background: #fff; border-radius: 12px; border: 2px solid var(--line); cursor: crosshair; touch-action: none; }
+.chart-readout { margin-top: 6px; padding: 6px 10px; background: #eef6ff; border-radius: 10px; font-size: 0.92rem; min-height: 2.2em; }
+.chart-legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.9rem; }
+.chart-legend i { display: inline-block; width: 14px; height: 4px; margin-right: 5px; vertical-align: middle; }
+.two-charts { display: grid; gap: 12px; }
+.sim-split { display: grid; grid-template-columns: minmax(240px, 280px) 1fr; gap: 16px; align-items: start; }
+.garden-split { grid-template-columns: 1fr minmax(200px, 240px); }
+.dot-canvas, .bunny-canvas, .map-canvas { width: 100%; height: auto; background: #fff; border-radius: 14px; border: 2px solid var(--line); display: block; }
+.map-canvas { cursor: crosshair; max-width: 640px; margin: 0 auto; }
+.dot-wrap p { text-align: center; margin: 4px 0 0; }
+.sim-split:has(.bunny-canvas) { grid-template-columns: 1fr 1fr; }
+@media (max-width: 860px) { .sim-split, .garden-split, .sim-split:has(.bunny-canvas) { grid-template-columns: 1fr; } }
+
+.town-strip { display: flex; flex-wrap: wrap; gap: 2px; font-size: 1.35rem; min-height: 2rem; margin-bottom: 8px; }
+.plant-stage svg { width: 100%; height: auto; display: block; border-radius: 14px; border: 2px solid var(--line); }
+.log-scroll { max-height: 220px; overflow: auto; }
+.log-table td, .log-table th { text-align: center; }
+
+/* reveal answers box and key lists */
+.answer-box { margin: 14px 18px 0; padding: 12px 16px; background: #fff3ef; border: 3px solid var(--coral); border-radius: 16px; }
+.key-list { margin: 8px 0 0; padding-left: 20px; }
+.key-list li { margin-bottom: 4px; }
+.btn-coral:disabled { background: #d6dbe6; border-color: #aab4c6; color: #5a6a8f; box-shadow: none; }
+
+/* cypher */
+.code-letter-tile { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: var(--sun); border: 3px solid var(--ink); border-radius: 12px; font-family: var(--display); font-size: 1.7rem; box-shadow: 0 3px 0 var(--ink); }
+.shift-key { border-collapse: collapse; font-family: var(--font); font-size: 0.95rem; }
+.shift-key th { text-align: right; padding: 6px 10px; white-space: nowrap; }
+.shift-key td { min-width: 26px; text-align: center; padding: 6px 2px; border: 1px solid #c9d6ea; font-weight: 700; }
+.shift-key tr.plain td { background: #eef6ff; }
+.shift-key tr.coded td { background: #fff3cc; }
+.exhibit b { font-size: 1.2rem; }
+.mt-card .exhibit { display: inline; }
+.law-pick { font-size: 0.85rem; padding: 5px 9px; }
+.penalty-pop { background: var(--coral); }
+
+/* launch pad mission board and controls */
+.mission-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 10px 0 14px; }
+.mission-card { display: flex; gap: 10px; align-items: flex-start; text-align: left; font-family: var(--font); background: #fff; border: 3px solid #b8c7de; border-radius: 14px; padding: 8px 10px; cursor: pointer; color: var(--ink); }
+.mission-card .mc-icon { font-size: 1.5rem; line-height: 1.1; }
+.mission-card .mc-body { display: flex; flex-direction: column; gap: 1px; }
+.mission-card small { color: var(--muted); font-size: 0.8rem; }
+.mission-card.on { border-color: var(--sun-dark); background: #fff8dc; }
+.mission-card.done { border-color: var(--kelp); background: #eafbee; }
+.launch-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px 16px; margin: 8px 0; align-items: center; }
+.launch-controls .lc-group { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-weight: 600; }
+.launch-canvas { touch-action: none; cursor: crosshair; outline: none; }
+.launch-canvas:focus-visible { box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.5); }
+.bunny-game { touch-action: none; outline: none; }
+
+/* mission tabs (shared by every station) */
+.mtabs-wrap { margin: 0 0 12px; }
+.mtabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.mtab { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font); font-weight: 600; font-size: 1rem; padding: 8px 14px; border-radius: 999px; border: 3px solid #b8c7de; background: #fff; color: var(--ink); cursor: pointer; }
+.mtab .mt-ico { font-size: 1.15rem; }
+.mtab.on { background: var(--sun); border-color: var(--sun-dark); }
+.mtab.done { border-color: var(--kelp); background: #eafbee; }
+.mtab.on.done { background: #c9f5d3; }
+.mgoal { margin-top: 8px; padding: 8px 12px; background: #0d2242; color: #e8f6ff; border-radius: 12px; font-weight: 600; }
+.mgoal .mprog { opacity: 0.7; font-weight: 400; font-size: 0.9rem; }
+.lead { margin: 0 0 10px; font-size: 1.05rem; font-weight: 600; }
+.sir-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0; }
+.sir-chips span { padding: 2px 10px; border-radius: 999px; background: #fff; border: 2px solid var(--line); font-weight: 600; font-size: 0.9rem; }
+
+/* phones: two bins per row so the card tray is not pushed far below the first bin */
+@media (max-width: 600px) { .sort-bins { grid-template-columns: repeat(2, 1fr); gap: 8px; } .sort-bins .sort-bin p { display: none; } }
+
+/* hatch checks: statement text gets the full width, category buttons wrap underneath */
+.gate-card .scenario { grid-template-columns: 34px minmax(0, 1fr); }
+.gate-card .law-picks { grid-column: 1 / -1; }
+/* phones: let the top bar buttons wrap instead of scrolling sideways */
+@media (max-width: 640px) { .hud { flex-wrap: wrap; gap: 6px; } .hud-pill { padding: 4px 8px; } #topbar { flex-wrap: wrap; } }
