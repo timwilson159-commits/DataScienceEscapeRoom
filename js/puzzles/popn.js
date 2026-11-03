@@ -111,7 +111,7 @@ ER.register({
       { id: 'c', icon: '🔮', label: 'Predict', goal: 'Predict and judge the model.', node: quiz, done: () => done.c },
     ]);
     body.append(el('p', { class: 'lead' }, '🏘️ Stormhaven has 50,000 people. You are the council planner!'), tabs.tabs, sim, tabs.panel);
-    check = ((orig) => () => { tabs.refresh(); orig(); })(check);
+    check = ((orig) => () => { orig(); try { tabs.refresh(); } catch (e) { console.error(e); } })(check);
     return () => { if (stop) stop(); };
   },
 });

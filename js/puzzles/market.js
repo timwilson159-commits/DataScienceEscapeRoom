@@ -88,7 +88,7 @@ ER.register({
       { id: 'b', icon: '🚩', label: 'Red flags', goal: 'Match each claim to its red flag.', node: hosts[1], done: () => done.b },
       { id: 'c', icon: '🛡️', label: 'Think like a scientist', goal: 'Pick the best answer for each question.', node: hosts[2], done: () => done.c },
     ]);
-    check = ((orig) => () => { tabs.refresh(); orig(); })(check);
+    check = ((orig) => () => { orig(); try { tabs.refresh(); } catch (e) { console.error(e); } })(check);
     body.append(el('p', { class: 'lead' }, "🔮 Every stall has a claim. Which ones are science?"), tabs.tabs, tabs.panel);
 
   },

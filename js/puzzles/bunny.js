@@ -381,7 +381,7 @@ ER.register({
       { id: 'b', icon: '🌄', label: 'Mountain meadow', goal: 'Cross the big meadow once as white, once as brown and once as grey.', done: () => done.b, onSelect: () => { if (level !== 'meadow') { level = 'meadow'; levelC.set('meadow'); newRun(); } } },
       { id: 'c', icon: '🧠', label: 'Explain it', goal: 'Explain what the game showed you.', node: quiz, done: () => done.c },
     ]);
-    check = ((orig) => () => { tabs.refresh(); orig(); })(check);
+    check = ((orig) => () => { orig(); try { tabs.refresh(); } catch (e) { console.error(e); } })(check);
     body.append(el('p', { class: 'lead' }, '🐺 Hide from the wolves in spots that match your fur. Reach the burrow!'), tabs.tabs, sim, tabs.panel);
 
     if (ER.DEBUG) ER._bunnyGame = { // test hook (only with ?debug)

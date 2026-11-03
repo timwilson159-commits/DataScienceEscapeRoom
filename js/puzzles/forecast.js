@@ -171,7 +171,7 @@ ER.register({
       { id: 'trend', icon: '📈', label: 'Trend line', goal: 'Click two points to draw a line through the middle of the dots, then predict 2035.', node: card1, done: () => done.pred && done.mc },
       { id: 'storm', icon: '🌀', label: 'Cyclone Tilly', goal: 'Click where you think Cyclone Tilly will be on Day 5.', node: card2, done: () => done.storm && done.cone },
     ]);
-    check = ((orig) => () => { tabs.refresh(); orig(); })(check);
+    check = ((orig) => () => { orig(); try { tabs.refresh(); } catch (e) { console.error(e); } })(check);
     body.append(el('p', { class: 'lead' }, '🔍 Find the pattern in the data, then make a prediction.'), tabs.tabs, tabs.panel);
   },
 });

@@ -127,7 +127,7 @@ ER.register({
       tabs.tabs,
       el('div', { class: 'sir-chips' }, el('span', { class: 'sir-s' }, '🟢 Susceptible (could catch it)'), el('span', { class: 'sir-i' }, '🔴 Infected'), el('span', { class: 'sir-r' }, '🔵 Recovered / immune')),
       sim, tabs.panel);
-    check = ((orig) => () => { tabs.refresh(); orig(); })(check);
+    check = ((orig) => () => { orig(); try { tabs.refresh(); } catch (e) { console.error(e); } })(check);
     return () => { if (stop) stop(); };
   },
 });

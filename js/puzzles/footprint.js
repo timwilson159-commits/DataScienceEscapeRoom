@@ -90,7 +90,7 @@ ER.register({
       { id: 'b', icon: '🔢', label: 'Kinds of data', goal: 'Drag each card into numerical or non-numerical.', node: hosts[1], done: () => done.b },
       { id: 'c', icon: '🛡️', label: 'Safe and smart', goal: 'Pick the best answer for each question.', node: hosts[2], done: () => done.c },
     ]);
-    check = ((orig) => () => { tabs.refresh(); orig(); })(check);
+    check = ((orig) => () => { orig(); try { tabs.refresh(); } catch (e) { console.error(e); } })(check);
     body.append(el('p', { class: 'lead' }, "👣 Follow Alex's online day and sort what it leaves behind."), tabs.tabs, tabs.panel);
 
   },

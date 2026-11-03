@@ -100,7 +100,7 @@ ER.register({
       { id: 'c', icon: '🔮', label: 'Predict', goal: 'Make two predictions.', node: quiz, done: () => done.c },
     ]);
     body.append(el('p', { class: 'lead' }, '🐇 Hares eat grass. 🐆 Lynx eat hares. Play with the model!'), tabs.tabs, sim, tabs.panel);
-    check = ((orig) => () => { tabs.refresh(); orig(); })(check);
+    check = ((orig) => () => { orig(); try { tabs.refresh(); } catch (e) { console.error(e); } })(check);
     return () => { if (stop) stop(); };
   },
 });

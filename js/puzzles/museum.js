@@ -93,7 +93,7 @@ ER.register({
       { id: 'b', icon: '🔗', label: 'What does it stand for?', goal: 'Match each model to what it represents.', node: hosts[1], done: () => done.b },
       { id: 'c', icon: '🛡️', label: 'Why models?', goal: 'Pick the best answer for each question.', node: hosts[2], done: () => done.c },
     ]);
-    check = ((orig) => () => { tabs.refresh(); orig(); })(check);
+    check = ((orig) => () => { orig(); try { tabs.refresh(); } catch (e) { console.error(e); } })(check);
     body.append(el('p', { class: 'lead' }, "🏛️ Every exhibit is a model, a simplified copy of the real world."), tabs.tabs, tabs.panel);
 
   },

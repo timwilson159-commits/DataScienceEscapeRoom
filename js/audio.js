@@ -83,5 +83,13 @@
     },
   };
 
+  // Sound is decoration only: if the browser or device refuses audio, never let that stop game logic
+  // (answer checks play a sound just before they mark a station complete).
+  Object.keys(sfx).forEach((k) => {
+    const f = Object.getOwnPropertyDescriptor(sfx, k).value;
+    if (typeof f !== 'function') return;
+    sfx[k] = function () { try { return f.apply(this, arguments); } catch (e) { return undefined; } };
+  });
+
   window.ER.sfx = sfx;
 })();
